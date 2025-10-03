@@ -10,7 +10,7 @@ $$
 **a)** Encuentre el valor de $k$ que haga de $f(y)$ una función de densidad de probabilidad.
 
 Queremos que $$
-\int_{0}^{1} ky(1-y)\, dy = k\int_{0}^{1} (y - y^{2})\, dy = k(\frac{y^{2}}{2}-\frac{y^{3}}{3})\bigg|_{y=0}^{y = 1}=\frac{k}{6} = 1
+\int_{0}^{1} ky(1-y)\, dy = k\int_{0}^{1} (y - y^{2})\, dy = k\bigg(\frac{y^{2}}{2}-\frac{y^{3}}{3}\bigg)\bigg|_{y=0}^{y = 1}=\frac{k}{6} = 1
 $$ Por tanto debemos de tomar $k = 6$.
 
 **b)** Encuentre $P(0.4\leq Y \leq 1)$.
@@ -20,7 +20,7 @@ Sabemos que
 $$
 P(0.4\leq Y \leq 1) = \int_{0.4}^{1} f(y)\, dy = \int_{0.4}^{1} 6y(1-y)dy
 $$ Por lo tanto, $$
-P(0.4\leq Y \leq 1) = 6\int_{0.4}^{1} (y - y^{2})\, dy = 6(\frac{y^{2}}{2}-\frac{y^{3}}{3})\bigg|_{y=0.4}^{y = 1}=1 - 6\bigg(\frac{(0.4)^{2}}{2}-\frac{(0.4)^{3}}{3}\bigg) 
+P(0.4\leq Y \leq 1) = 6\int_{0.4}^{1} (y - y^{2})\, dy = 6\bigg(\frac{y^{2}}{2}-\frac{y^{3}}{3}\bigg)\bigg|_{y=0.4}^{y = 1}=1 - 6\bigg(\frac{(0.4)^{2}}{2}-\frac{(0.4)^{3}}{3}\bigg) 
 $$ Se sigue que la respuesta es:
 
 ```{r}
@@ -39,7 +39,7 @@ sol_b
 **d)** Hallar $F(y)$, $F(0.2)$
 
 Por definición $$
-F(y) = \int_{0}^{y} 6t(1-t)\, dt = 6\int_{0}^{y} (t-t^{2})\, dt = 6\bigg(\frac{y^{2}}{2}-\frac{y^{3}}{3}\big) = (3-2y)y^{2}
+F(y) = \int_{0}^{y} 6t(1-t)\, dt = 6\int_{0}^{y} (t-t^{2})\, dt = 6\bigg(\frac{y^{2}}{2}-\frac{y^{3}}{3}\bigg) = (3-2y)y^{2}
 $$ Evaluando, obtenemos que el valor de $F(0.2)$ es:
 
 ```{r}
@@ -75,7 +75,9 @@ roots <- polyroot(coeffs)
 roots
 ```
 
-Por tanto la solución que buscamos es (aproximadamente) 0.8042 **g)** Si $g(Y) = 100 Y^{2}$, hallar $E[g(Y)]$
+Por tanto la solución que buscamos es (aproximadamente) 0.8042
+
+**g)** Si $g(Y) = 100 Y^{2}$, hallar $E[g(Y)]$
 
 Por las propiedades del valor esperado, tenemos que $$
 E[g(Y)] = E[100 Y^{2}] = 100 E[Y^{2}] = 100(0.3) = 30

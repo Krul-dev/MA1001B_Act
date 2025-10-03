@@ -1,0 +1,82 @@
+# 1.10 Ejemplo
+
+Supongamos que $Y$ es una variable aleatoria con función de densidad dada por: $$
+f(y) = \begin{cases}
+k y(1-y), & 0 \leq y \leq 1 \\
+0 , & \mbox{en otro caso}
+\end{cases}
+$$
+
+**a)** Encuentre el valor de $k$ que haga de $f(y)$ una función de densidad de probabilidad.
+
+Queremos que $$
+\int_{0}^{1} ky(1-y)\, dy = k\int_{0}^{1} (y - y^{2})\, dy = k(\frac{y^{2}}{2}-\frac{y^{3}}{3})\bigg|_{y=0}^{y = 1}=\frac{k}{6} = 1
+$$ Por tanto debemos de tomar $k = 6$.
+
+**b)** Encuentre $P(0.4\leq Y \leq 1)$.
+
+Sabemos que
+
+$$
+P(0.4\leq Y \leq 1) = \int_{0.4}^{1} f(y)\, dy = \int_{0.4}^{1} 6y(1-y)dy
+$$ Por lo tanto, $$
+P(0.4\leq Y \leq 1) = 6\int_{0.4}^{1} (y - y^{2})\, dy = 6(\frac{y^{2}}{2}-\frac{y^{3}}{3})\bigg|_{y=0.4}^{y = 1}=1 - 6\bigg(\frac{(0.4)^{2}}{2}-\frac{(0.4)^{3}}{3}\bigg) 
+$$ Se sigue que la respuesta es:
+
+```{r}
+sol_b = 1 - 6*( ((0.4)^2)/2 - ((0.4)^3)/3 )
+sol_b
+```
+
+**c)** Encuentre $P(0.4\leq Y \leq 1)$.
+
+En este caso el resultado debe de ser igual al caso anterior, es decir
+
+```{r}
+sol_b
+```
+
+**d)** Hallar $F(y)$, $F(0.2)$
+
+Por definición $$
+F(y) = \int_{0}^{y} 6t(1-t)\, dt = 6\int_{0}^{y} (t-t^{2})\, dt = 6\bigg(\frac{y^{2}}{2}-\frac{y^{3}}{3}\big) = (3-2y)y^{2}
+$$ Evaluando, obtenemos que el valor de $F(0.2)$ es:
+
+```{r}
+sol_2 = (3-2*(0.2))*((0.2)^2)
+sol_2
+```
+
+**e)** Hallar el promedio $\mu = E[Y]$ y la varianza $\sigma^{2} = \operatorname{Var}[Y]$
+
+Por definición, $$
+\mu = E[Y] = \int_{-\infty}^{\infty} yf(y)\, dy = \int_{0}^{1} 6y^{2}(1-y)\, dy
+$$ Por tanto $$
+\mu = 6\int_{0}^{1}(y^{2}-y^{3})\, dy = 6\bigg(\frac{y^{3}}{3}-\frac{y^{4}}{4} \bigg)\bigg|_{y=0}^{y=1} = \frac{6}{12} = 0.5
+$$ Por otro lado, $$
+E[Y^{2}] = \int_{-\infty}^{\infty} y^{2}f(y)\, dy = \int_{0}^{1} 6y^{3}(1-y)\, dy
+$$De donde obtenemos que $$
+E[Y^{2}] = 6\int_{0}^{1}(y^{3}-y^{4})\, dy = 6\bigg(\frac{y^{4}}{4}-\frac{y^{5}}{5} \bigg)\bigg|_{y=0}^{y=1} = \frac{6}{20} = 0.3
+$$ Se sigue que $$
+\operatorname{Var}[Y] = E[Y^{2}] - \mu^{2} = 0.3-(0.5)^{2} = 0.3-0.25 = 0.05
+$$
+
+**f)** Hallar el percentil 90 (es decir, la $y$ tal que $F(y) = 0.90$)
+
+Notemos que queremos resolver la ecuación $$
+F(y) =-2y^{3} + 3y^{2} = 0.9
+$$ es decir $$
+-0.9 +0 y + 3y^{2} -2y^{3} = 0
+$$ Las raíces de este polinomio son:
+
+```{r}
+coeffs <- c(-0.9,0,3,-2)
+roots <- polyroot(coeffs)
+roots
+```
+
+Por tanto la solución que buscamos es (aproximadamente) 0.8042 **g)** Si $g(Y) = 100 Y^{2}$, hallar $E[g(Y)]$
+
+Por las propiedades del valor esperado, tenemos que $$
+E[g(Y)] = E[100 Y^{2}] = 100 E[Y^{2}] = 100(0.3) = 30
+$$

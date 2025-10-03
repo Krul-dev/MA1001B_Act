@@ -1,0 +1,11 @@
+---
+title: "Ejemplo" 
+author: "Raul Gomez"
+date: today
+format:
+   pdf:
+     fontsize: 11pt
+     pdf-engine: pdflatex
+---
+
+{{< include 1_10_1.qmd >}}

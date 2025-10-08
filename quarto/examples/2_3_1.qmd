@@ -1,0 +1,68 @@
+# 2.3.1. El misterioso helio
+
+Suponga que la porosidad al helio (en porcentaje) de muestras de carbón, tomadas de cualquier veta en particular, está normalmente distribuida con una desviación estándar verdadera de 0.75. Se sabe que 10 años atrás la porosidad media de helio en la veta era de 5.3 y se tiene interés en saber si actualmente ha disminuido. Se toma una muestra al azar de 20 especímenes y su promedio resulta de 4.85.
+
+## A) Haga una estimación por intervalo con una confianza del 97% para el promedio de porosidad para evaluar si ha disminuido.
+
+**Solución**:
+
+```{r}
+# Given values
+Sd = 0.75
+mn = 5.3
+n1 = 20
+average1 = 4.85
+alpha = 0.03
+
+# Z-score for 97% confidence interval
+zf = qnorm(alpha)
+z = abs(zf)
+
+# Standard error
+se1 = Sd / sqrt(n1)
+
+# Confidence interval
+lower1 = average1 - z * se1
+upper1 = average1 + z * se1
+
+```
+
+El intervalo de confianza del 97% para la primera muestra es: `r lower1`  , `r upper1`\
+
+## B) Se toma otra muestra de tamaño 16. El promedio de la muestra fue de 4.56. Calcule el intervalo de confianza al 97% de confianza
+
+```{r}
+n2 = 16
+average2 = 4.56
+
+se2 = Sd / sqrt(n2)
+
+lower2 = average2 - z * se2
+upper2 = average2 + z * se2
+
+```
+
+El intervalo de confianza del 97% para la segunda muestra es: 
+```{r}
+c(lower2, upper2)
+```
+
+## C) ¿Podemos afirmar que la porosidad del helio ha disminuido?
+
+```{r}
+# Checking if the confidence intervals are below 5.3
+if (upper1 < mn) {
+  cat("Para la primera muestra, la porosidad del helio ha disminuído.\n")
+} else {
+  cat("Para la primera muestra, no hay suficiente evidencia para decir que la porosidad del helio ha disminuído.\n")
+}
+
+if (upper2 < mn) {
+  cat("Para la segunda muestra, la porosidad del helio ha disminuído.\n")
+} else {
+  cat("Para la primera muestra, no hay suficiente evidencia para decir que la porosidad del helio ha disminuído.\n")
+}
+
+```
+
+Por tanto, en ambas muestras podemos afirmar que la porosidad de helio ha disminuído.

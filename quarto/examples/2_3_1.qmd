@@ -27,7 +27,9 @@ upper1 = average1 + z * se1
 
 ```
 
-El intervalo de confianza del 97% para la primera muestra es: `r lower1`  , `r upper1`\
+```{r}
+c(lower1, upper1)
+```
 
 ## B) Se toma otra muestra de tamaño 16. El promedio de la muestra fue de 4.56. Calcule el intervalo de confianza al 97% de confianza
 
@@ -42,7 +44,8 @@ upper2 = average2 + z * se2
 
 ```
 
-El intervalo de confianza del 97% para la segunda muestra es: 
+El intervalo de confianza del 97% para la segunda muestra es:
+
 ```{r}
 c(lower2, upper2)
 ```

@@ -1,0 +1,33 @@
+# 2.6.1. La empresa Elimar
+
+La empresa Elimar S.A. de C. V. fabrica propulsores a través de dos métodos. Un inspector está interesado en evaluarlos para saber si mantienen la misma calidad respecto a las variaciones del ancho de las hélices. Para ello obtiene experimentalmente los siguientes datos:
+
+-   Proceso 1: $s_{1} = 5.1$ con $n_{1} = 12$
+-   Proceso 2: $s_{2} = 4.7$ con $n_{2} = 16$
+
+Suponiendo normalidad, ayúdelo a calcular el intervalo del cociente de varianzas y a decidir si los dos métodos mantienen la misma calidad. Trabaje al nivel de confianza del 95%.
+
+**Solución**:
+
+```{r}
+s1 <- 5.1; n1 <- 12
+s2 <- 4.7; n2 <- 16
+alpha <- 0.05
+
+R <- (s1^2)/(s2^2)  # razón de varianzas muestrales
+lo <- R / qf(1 - alpha/2, df1 = n1-1, df2 = n2-1)
+hi <- R / qf(alpha/2,     df1 = n1-1, df2 = n2-1)
+c(lo, hi)
+```
+
+Adicionalmente, podemos calcular el valor $p$ de esta prueba:
+
+```{r}
+# valor p del test F bilateral para H0: sigma1^2 = sigma2^2
+p_two <- 2 * min(
+  pf(R, df1 = n1-1, df2 = n2-1),
+  1 - pf(R, df1 = n1-1, df2 = n2-1)
+)
+p_two
+```
+

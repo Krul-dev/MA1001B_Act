@@ -10,3 +10,13 @@ DEy <- 1.72
 conf_level <- 0.95
 z.test(x,y,conf.level = conf_level, sigma.x = DEx, sigma.y = DEy)
 ```
+
+# Casos 2 y 3
+
+En el caso en que no conocemos la varianza, hacemos:
+
+```{r}
+x = rnorm(30, mean=5, sd=0.82)
+y = rnorm(35, mean=5.5, sd=1.72)
+t.test(x, y, var.equal = FALSE, conf.level = 0.95)
+```

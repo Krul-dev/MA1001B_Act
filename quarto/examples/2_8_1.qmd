@@ -1,0 +1,12 @@
+# 2.8.1. Casos 1,4,5
+
+```{r}
+library(BSDA)
+x = rnorm(30, mean=5, sd=0.82)
+y = rnorm(35, mean=5.5, sd=1.72)
+
+DEx <- 0.82
+DEy <- 1.72
+conf_level <- 0.95
+z.test(x,y,conf.level = conf_level, sigma.x = DEx, sigma.y = DEy)
+```
